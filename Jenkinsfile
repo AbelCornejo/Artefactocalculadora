@@ -22,8 +22,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'mkdir "C:\\JenkinsDeployment"'
-                bat 'xcopy /s /y * "C:\\JenkinsDeployment\\"'
+                bat 'mkdir "C:\\JenkinsDeployments"'
+                bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
 
             post {

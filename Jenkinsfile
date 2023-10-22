@@ -10,10 +10,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Aquí puedes realizar acciones específicas de construcción si es necesario.
-                // En tu caso, como solo tienes archivos HTML y CSS, es posible que no necesites nada aquí.
+                echo "Etapa BUILD no disponible"
             }
         }
+        stage('Test') {
+            steps {
+                echo "Etapa TEST no disponible"
+            }
+        }
+
 
         stage('Deploy') {
             steps {

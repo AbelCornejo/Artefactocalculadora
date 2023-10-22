@@ -22,12 +22,13 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Copia los archivos HTML y CSS al directorio de despliegue.
-                sh 'mkdir -p /var/www/html'  // Asegúrate de especificar la ubicación correcta.
-                sh 'cp -r * /var/www/html/'  // Copia todos los archivos al directorio de despliegue.
-            }
-        }
+                // Crea el directorio de destino en Windows (ajusta la ruta según tus necesidades).
+                bat 'mkdir "C:\\JenkinsDeployment"'
+
+                // Copia los archivos al directorio de destino.
+                bat 'xcopy /s /y * "C:\\JenkinsDeployment\\"'
     }
+}
 
     post {
         success {

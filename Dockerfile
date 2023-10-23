@@ -1,16 +1,19 @@
-FROM jenkins/jenkins:latest
+FROM node:14
 
-USER root
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# Instala Nginx
-RUN apt-get update && apt-get install -y nginx
+# Copia tu package.json y package-lock.json (si tienes uno)
+COPY package*.json ./
 
-# Copia tus archivos HTML y CSS al directorio de Nginx
-COPY index.html /var/www/html/
-COPY styles.css /var/www/html/
+# Instala las dependencias
+RUN npm install
 
-# Exponer el puerto 8091
+# Copia el resto de tu aplicación
+COPY . .
+
+# Expone el puerto (si es necesario)
 EXPOSE 8091
 
-# Inicia Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para iniciar tu aplicación
+CMD ["npm", "start"]

@@ -29,20 +29,21 @@ pipeline {
             }
         }
         stage('Notify Calculator') {
-            steps {
+             steps {
                 script {
                     def response = httpRequest(
-                    httpMode: 'POST',
-                    url: 'http://localhost:8091/setStatus', // URL del endpoint en tu calculadora
-                    requestBody: 'FAILURE', // Puedes enviar el estado de la compilación aquí
-            )
-            echo "Response: ${response}"
-            if (response.status != 200) {
-                error('Failed to notify the calculator')
-                    }
-                 }
+                        httpMode: 'POST',
+                        url: 'http://localhost:8091/setStatus',
+                        requestBody: '{"status": "FAILURE"}', // JSON válido con el estado que deseas enviar
+                        contentType: 'APPLICATION_JSON'
+                    )
+                    if (response.status != 200) {
+                        error('Failed to notify the calculator')
             }
         }
+    }
+}
+
 
     }
     post {

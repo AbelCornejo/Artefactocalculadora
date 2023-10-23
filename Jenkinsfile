@@ -28,15 +28,14 @@ pipeline {
                 bat 'mkdir "C:\\JenkinsDeployments"'
                 bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
-
-            post {
-                success {
-                    echo 'El despliegue se ha realizado con éxito :).'
-                }
-                failure {
-                    echo 'El despliegue ha fallado :('
-                }
-            }
+        }
+    }
+    post {
+        failure {
+            echo 'Las pruebas han fallado :('
+        }
+        success {
+            echo 'El despliegue se ha realizado con éxito :).'
         }
     }
 }

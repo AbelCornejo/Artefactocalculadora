@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/AbelCornejo/Artefactocalculadora/issues"
   },
-  "homepage": "https://github.com/AbelCornejo/Artefactocalculadora#readme"
+  "homepage": "https://github.com/AbelCornejo/Artefactocalculadora#readme",
+  "scripts": {
+    "start": "node index.js"
+  }
+  
 }

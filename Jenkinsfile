@@ -39,4 +39,5 @@ pipeline {
             echo 'El despliegue se ha realizado con éxito :).'
         }
     }
+ }
 }

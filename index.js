@@ -28,7 +28,7 @@ app.post('/setStatus', (req, res) => {
 app.use((err, req, res, next) => {
   console.error('Error no controlado:', err);
   res.status(500).send('Ha ocurrido un error inesperado en la calculadora.');
-});
+});............asdasdas
 
 const port = process.env.PORT || 8091;
 

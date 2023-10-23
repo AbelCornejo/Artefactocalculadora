@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'rmdir /s /q "C:\\JenkinsDeployments"'
+                bat 'rmdir /s /q "C:\\JenkinsDeployments.....a"'
                 bat 'mkdir "C:\\JenkinsDeployments"'
                 bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }

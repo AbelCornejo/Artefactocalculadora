@@ -47,7 +47,7 @@ pipeline {
             script {
                 // Establece el estado de la calculadora según el resultado del flujo de trabajo
                 if (currentBuild.resultIsBetterOrEqualTo('FAILURE')) {
-                    sh 'curl -X POST http://localhost:8091/setStatus -d "status=FAILURE"'
+                    bat 'curl -X POST http://localhost:8091/setStatus -d "status=FAILURE"'
                 }
             }
         }

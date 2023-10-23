@@ -28,24 +28,6 @@ pipeline {
                 bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
         }
-        stage('Notify Calculator') {
-             steps {
-                script {
-                    def response = httpRequest(
-                        httpMode: 'POST',
-                        url: 'http://localhost:8091/setStatus',
-                        requestBody: '{"status": "FAILURE"}', // JSON válido con el estado que deseas enviar
-                        contentType: 'APPLICATION_JSON'
-                    )
-                    if (response.status != 200) {
-                        error('Failed to notify the calculator')
-            }
-        }
-    }
-}
-
-
-    }
     post {
         failure {
             script {

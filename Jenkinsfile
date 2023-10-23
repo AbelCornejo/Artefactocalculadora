@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Ejecuta tus pruebas y verifica si fallan
-                    def testResult = bat script: 'jasmine', returnStatus: true
+                    def testResult = bat(script: 'jasmine', returnStatus: true)
                     if (testResult != 0) {
                         currentBuild.result = 'FAILURE'
                     }
@@ -40,6 +40,12 @@ pipeline {
         failure {
             script {
                 currentBuild.result = 'FAILURE'
+                // Notificar sobre el fallo
+                emailext(
+                    subject: "Error en el flujo de trabajo de Jenkins",
+                    body: "El flujo de trabajo de Jenkins ha fallado debido a errores en las pruebas Jasmine.",
+                    to: "tu_correo@ejemplo.com",
+                )
             }
         }
 

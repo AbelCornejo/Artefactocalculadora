@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copia el resto de tu aplicación
-COPY . .
+COPY index.js /app
 
 # Expone el puerto (si es necesario)
 EXPOSE 8091

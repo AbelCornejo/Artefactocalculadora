@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 # Copia los archivos HTML y CSS a la ubicación adecuada en la imagen
 COPY index.html /usr/share/nginx/html
-COPY style.css /usr/share/nginx/html
+COPY styles.css /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80

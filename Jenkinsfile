@@ -28,6 +28,8 @@ pipeline {
                 bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
         }
+    } // Cierre de la sección 'stages'
+
     post {
         failure {
             script {
@@ -39,5 +41,4 @@ pipeline {
             echo 'El despliegue se ha realizado con éxito :).'
         }
     }
- }
-}
+} // Cierre del pipeline

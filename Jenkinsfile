@@ -10,8 +10,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'npm install -g jasmine'
                 bat 'npm install'
+                bat 'npm install -g jasmine'
             }
         }
         
@@ -31,7 +31,7 @@ pipeline {
     }
     post {
         failure {
-            script{
+            script {
                 currentBuild.result = 'FAILURE'
                 error('Las pruebas han fallado :(')
             }

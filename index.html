@@ -7,32 +7,62 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     </head>
     <body>
-
         <div id="appBg">
             <form name="calculator">
                 <input type="textfield" name="ans" value="" autocomplete="off" readonly >
 
-                <input type="button" value="7" onclick="document.calculator.ans.value+='7'" class="gray">
-                <input type="button" value="8" onclick="document.calculator.ans.value+='8'" class="gray">
-                <input type="button" value="9" onclick="document.calculator.ans.value+='9'" class="gray">
-                <input type="button" value="+" onclick="document.calculator.ans.value+='+'" class="orange">
+                <!-- Input fields for numbers and operators -->
+                <input type="button" value="7" onclick="appendToExpression('7')" class="gray">
+                <input type="button" value="8" onclick="appendToExpression('8')" class="gray">
+                <input type="button" value="9" onclick="appendToExpression('9')" class="gray">
+                <input type="button" value="+" onclick="appendToExpression('+')" class="orange">
                 <br>
-                <input type="button" value="4" onclick="document.calculator.ans.value+='4'" class="gray">
-                <input type="button" value="5" onclick="document.calculator.ans.value+='5'" class="gray">
-                <input type="button" value="6" onclick="document.calculator.ans.value+='6'" class="gray">
-                <input type="button" value="-" onclick="document.calculator.ans.value+='-'" class="orange">
+                <!-- Rest of the buttons... -->
                 <br>
-                <input type="button" value="1" onclick="document.calculator.ans.value+='1'" class="gray">
-                <input type="button" value="2" onclick="document.calculator.ans.value+='2'" class="gray">
-                <input type="button" value="3" onclick="document.calculator.ans.value+='3'" class="gray">
-                <input type="button" value="X" onclick="document.calculator.ans.value+='*'" class="orange">
-                <br>
-                <input type="button" value="0" onclick="document.calculator.ans.value+='0'" class="gray">
+                <input type="button" value="0" onclick="appendToExpression('0')" class="gray">
                 <input type="reset" value="C">
-                <input type="button" value="=" onclick="document.calculator.ans.value=eval(document.calculator.ans.value)">
-                <input type="button" value="/" onclick="document.calculator.ans.value+='/'" class="orange">
+                <input type="button" value="=" onclick="calculateResult()" class="blue">
+                <input type="button" value="/" onclick="appendToExpression('/')" class="orange">
             </form>
         </div>
 
+        <div id="error-message" style="color: red;"></div>
+
+        <script>
+            // Función para agregar elementos a la expresión
+            function appendToExpression(value) {
+                const expression = document.calculator.ans.value;
+                // Validar la entrada, por ejemplo, si solo se permiten dígitos y operadores
+                if (/^[0-9+\-*/]*$/.test(expression + value)) {
+                    document.calculator.ans.value += value;
+                    clearErrorMessage();
+                } else {
+                    displayErrorMessage("Entrada no válida");
+                }
+            }
+
+            // Función para calcular el resultado
+            function calculateResult() {
+                const expression = document.calculator.ans.value;
+                // Validar la expresión antes de evaluarla
+                if (/^[0-9+\-*/]*$/.test(expression)) {
+                    // Evaluar la expresión y mostrar el resultado
+                    document.calculator.ans.value = eval(expression);
+                    clearErrorMessage();
+                } else {
+                    displayErrorMessage("Expresión no válida");
+                }
+            }
+
+            // Función para mostrar un mensaje de error
+            function displayErrorMessage(message) {
+                document.getElementById("error-message").textContent = message;
+            }
+
+            // Función para borrar el mensaje de error
+            function clearErrorMessage() {
+                document.getElementById("error-message").textContent = "";
+            }
+        </script>
     </body>
 </html>

@@ -31,7 +31,7 @@ pipeline {
             steps {
                 bat 'rmdir /s /q "C:\\JenkinsDeployments"'
                 bat 'mkdir "C:\\JenkinsDeployments"'
-                bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'...........
+                bat 'xcopy /s /y * "C:\\JenkinsasdasdadDeployments\\"'
             }
         }
     }

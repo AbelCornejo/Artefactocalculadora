@@ -17,7 +17,13 @@ pipeline {
         
         stage('Test') {
             steps {
-                bat 'jasmine'
+                script {
+                    // Ejecuta tus pruebas y verifica si fallan
+                    def testResult = bat script: 'jasmine', returnStatus: true
+                    if (testResult != 0) {
+                        currentBuild.result = 'FAILURE'
+                    }
+                }
             }
         }
 
@@ -28,17 +34,22 @@ pipeline {
                 bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
         }
-    } // Cierre de la sección 'stages'
+    }
 
     post {
         failure {
             script {
                 currentBuild.result = 'FAILURE'
-                error('Las pruebas han fallado :(')
             }
         }
+
         success {
-            echo 'El despliegue se ha realizado con éxito :).'
+            script {
+                // Establece el estado de la calculadora según el resultado del flujo de trabajo
+                if (currentBuild.resultIsBetterOrEqualTo('FAILURE')) {
+                    sh 'curl -X POST http://localhost:8091/setStatus -d "status=FAILURE"'
+                }
+            }
         }
     }
-} // Cierre del pipeline
+}

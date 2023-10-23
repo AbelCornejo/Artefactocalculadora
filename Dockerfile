@@ -1,11 +1,16 @@
-FROM nginx:alpine
+FROM jenkins/jenkins:latest
 
-# Copia los archivos HTML y CSS a la ubicación adecuada en la imagen
-COPY index.html /usr/share/nginx/html
-COPY styles.css /usr/share/nginx/html
+# Expone el puerto 8091
+EXPOSE 8091
 
-# Exponer el puerto 8091 en lugar del puerto 80
-EXPOSE 7071
+USER root
 
-# Comando para iniciar el servidor web (en este caso, nginx)
+# Instala un servidor web, en este caso nginx
+RUN apt-get update && apt-get install -y nginx
+
+# Copia tus archivos HTML y CSS al directorio de nginx
+COPY index.html /var/www/html/
+COPY styles.css /var/www/html/
+
+# Inicia el servidor nginx
 CMD ["nginx", "-g", "daemon off;"]

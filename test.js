@@ -10,3 +10,5 @@ jasmine.loadConfig({
 
 // Ejecuta las pruebas
 jasmine.execute();
+
+// Asegúrate de que tus pruebas incluyan casos de prueba con errores intencionales

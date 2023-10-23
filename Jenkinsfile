@@ -10,15 +10,14 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'npm install -g jasmine'
                 sh 'npm install'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'npm install -g jasmine'
                 sh 'jasmine'
-                sh 'node test.js'
             }
         }
 
@@ -32,7 +31,10 @@ pipeline {
     }
     post {
         failure {
-            echo 'Las pruebas han fallado :('
+            script{
+                currentBuild.result = 'FAILURE'
+                error('Las pruebas han fallado :(')
+            }
         }
         success {
             echo 'El despliegue se ha realizado con éxito :).'

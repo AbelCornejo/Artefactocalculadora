@@ -10,13 +10,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Etapa BUILD no disponible"
+                sh 'npm install'
             }
         }
         
         stage('Test') {
             steps {
-                echo "Etapa TEST no disponible"
+                sh 'npm install jasmine'
+                sh 'node test.js'
             }
         }
 
@@ -29,7 +30,10 @@ pipeline {
 
             post {
                 success {
-                    echo 'El despliegue se ha realizado con éxito.'
+                    echo 'El despliegue se ha realizado con éxito :).'
+                }
+                failure {
+                    echo 'El despliegue ha fallado :('
                 }
             }
         }

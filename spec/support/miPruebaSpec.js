@@ -1,12 +1,22 @@
-describe('Mi prueba', function() {
-    it('debería sumar dos números', function() {
-      var resultado = sumar(2, 3);
-      expect(resultado).toBe(5);
+describe("Mi prueba", function() {
+    it("debería sumar dos números", function() {
+      // Definir la función sumar
+      function sumar(a, b) {
+        return a + b;
+      }
+  
+      // Realizar una expectativa
+      expect(sumar(2, 3)).toBe(5);
     });
   
-    it('debería restar dos números', function() {
-      var resultado = restar(5, 2);
-      expect(resultado).toBe(3);
+    it("debería restar dos números", function() {
+      // Definir la función restar
+      function restar(a, b) {
+        return a - b;
+      }
+  
+      // Realizar una expectativa
+      expect(restar(5, 2)).toBe(3);
     });
   });
   

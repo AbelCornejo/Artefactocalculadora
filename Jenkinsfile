@@ -10,14 +10,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'npm install -g jasmine'
-                sh 'npm install'
+                bat 'npm install -g jasmine'
+                bat 'npm install'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'jasmine'
+                bat 'jasmine'
             }
         }
 

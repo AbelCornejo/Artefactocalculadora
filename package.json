@@ -4,7 +4,8 @@
   "description": "Prueba de calculadora",
   "main": "test.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,5 @@
   "bugs": {
     "url": "https://github.com/AbelCornejo/Artefactocalculadora/issues"
   },
-  "homepage": "https://github.com/AbelCornejo/Artefactocalculadora#readme",
-  "scripts": {
-    "start": "node index.js"
-  }
-  
+  "homepage": "https://github.com/AbelCornejo/Artefactocalculadora#readme"
 }

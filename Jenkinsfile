@@ -16,7 +16,8 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'npm install jasmine'
+                sh 'npm install -g jasmine'
+                sh 'jasmine'
                 sh 'node test.js'
             }
         }

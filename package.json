@@ -1,0 +1,19 @@
+{
+  "name": "calculadora",
+  "version": "1.0.0",
+  "description": "Prueba de calculadora",
+  "main": "test.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbelCornejo/Artefactocalculadora.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbelCornejo/Artefactocalculadora/issues"
+  },
+  "homepage": "https://github.com/AbelCornejo/Artefactocalculadora#readme"
+}

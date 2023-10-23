@@ -36,6 +36,7 @@ pipeline {
                     url: 'http://localhost:8091/setStatus', // URL del endpoint en tu calculadora
                     requestBody: 'FAILURE', // Puedes enviar el estado de la compilación aquí
             )
+            echo "Response: ${response}"
             if (response.status != 200) {
                 error('Failed to notify the calculator')
                     }

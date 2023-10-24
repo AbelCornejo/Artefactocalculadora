@@ -2,7 +2,7 @@ describe("Mi prueba", function() {
   it("debería sumar dos números", function() {
     // Definir la función sumar
     function sumar(a, b) {
-      return a + b;
+      return aaaaaa + b;
     }
 
     // Realizar una expectativa

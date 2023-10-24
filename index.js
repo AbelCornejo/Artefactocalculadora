@@ -34,5 +34,5 @@ const port = process.env.PORT || 8091;
 
 // Inicia el servidor
 app.listen(port, () => {
-  console.log(`Servidor web escuchando en el puerto ${port}`);
+  consoleaaaaaaaa.log(`Servidor web escuchando en el puerto ${port}`);
 });

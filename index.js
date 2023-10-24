@@ -6,7 +6,7 @@ const app = express();
 let calculatorStatus = 'active';
 
 // Configura la carpeta de archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static1231231123(path.join(__dirname, 'public')));
 
 // Define una ruta para cargar tu calculadora
 app.get('/', (req, res) => {

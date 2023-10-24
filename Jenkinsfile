@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Agrega comandos para construir tu proyecto
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
                 script {
                     try {
                         // Ejecuta tus pruebas
-                        sh 'jasmine'
+                        bat 'jasmine'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error('Las pruebas han fallado :(')
@@ -32,9 +32,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Agrega comandos para implementar tu proyecto
-                sh 'rmdir /s /q "C:\\JenkinsDeployments"'
-                sh 'mkdir "C:\\JenkinsDeployments"'
-                sh 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
+                bat 'rmdir /s /q "C:\\JenkinsDeployments"'
+                bat 'mkdir "C:\\JenkinsDeployments"'
+                bat 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
         }
     }

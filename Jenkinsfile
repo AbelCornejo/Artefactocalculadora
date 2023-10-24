@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Agrega comandos para construir tu proyecto
+                bat 'cd'
                 bat 'npm install'
             }
         }

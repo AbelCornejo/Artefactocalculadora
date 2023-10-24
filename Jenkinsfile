@@ -10,11 +10,18 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Agrega comandos para construir tu proyecto
-                bat 'cd'
-                bat 'npm install'
+                script {
+                    try {
+                        // Agrega comandos para construir tu proyecto
+                        bat 'npm install'
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error('Error en la etapa de construcción :(')
+                    }
+                }
             }
         }
+
 
         stage('Test') {
             steps {

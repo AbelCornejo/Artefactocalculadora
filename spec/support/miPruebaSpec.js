@@ -19,7 +19,7 @@ describe("Mi prueba", function() {
     expect(restar(5, 2)).toBe(3);
   });
 
-  itssssss("debería generar un error intencional", function() {
+  it("debería generar un error intencional", function() {
     // Agregar código que genere un error intencional
     expect(true).toBe(true);
   });

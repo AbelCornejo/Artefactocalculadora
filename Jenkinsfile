@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploycito') {
             steps {
                 bat 'rmdir /s /q "C:\\JenkinsDeployments"'
                 bat 'mkdir "C:\\JenkinsDeployments"'

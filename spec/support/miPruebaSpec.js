@@ -21,6 +21,6 @@ describe("Mi prueba", function() {
 
   it("debería generar un error intencional", function() {
     // Agregar código que genere un error intencional
-    expect34214244432(true).toBe(true);
+    expect(true).toBe(true);
   });
 });

@@ -15,7 +15,7 @@ pipeline {
                         // Agrega comandos para construir tu proyecto
                         // En lugar de 'npm install', simplemente ejecuta el archivo Node.js
                         bat 'taskkill /F /IM node.exe'
-                        bat 'npm install' 
+                        bat 'node index.js' 
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error('Error en la etapa de construcción :(')

@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Ha ocurrido un error inesperado en la calculadora.');
 });
 
-const port = process.env.PORT || 8091;
+const port = process.env.PORT || 8092;
 
 // Inicia el servidor
 app.listen(port, () => {

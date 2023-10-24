@@ -10,18 +10,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'npm install'
-                bat 'npm install -g jasmine'
+                // Agrega comandos para construir tu proyecto
+                sh 'npm install'
             }
         }
-        
+
         stage('Test') {
             steps {
                 script {
-                    // Ejecuta tus pruebas y verifica si fallan
-                    def testResult = bat(script: 'jasmine', returnStatus: true)
-                    if (testResult != 0) {
+                    try {
+                        // Ejecuta tus pruebas
+                        sh 'jasmine'
+                    } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
+                        error('Las pruebas han fallado :(')
                     }
                 }
             }
@@ -29,9 +31,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'rmdir /s /q "C:\\JenkinsDeployments"'
-                bat 'mkdir "C:\\JenkinsDeployments"'
-                bat 'xcopy /s /y * "C:\\JenkinsasdasdadDeployments\\"'
+                // Agrega comandos para implementar tu proyecto
+                sh 'rmdir /s /q "C:\\JenkinsDeployments"'
+                sh 'mkdir "C:\\JenkinsDeployments"'
+                sh 'xcopy /s /y * "C:\\JenkinsDeployments\\"'
             }
         }
     }
@@ -40,21 +43,6 @@ pipeline {
         failure {
             script {
                 currentBuild.result = 'FAILURE'
-                // Notificar sobre el fallo
-                emailext(
-                    subject: "Error en el flujo de trabajo de Jenkins",
-                    body: "El flujo de trabajo de Jenkins ha fallado debido a errores en las pruebas Jasmine.",
-                    to: "tu_correo@ejemplo.com",
-                )
-            }
-        }
-
-        success {
-            script {
-                // Establece el estado de la calculadora según el resultado del flujo de trabajo
-                if (currentBuild.resultIsBetterOrEqualTo('FAILURE')) {
-                    bat 'curl -X POST http://localhost:8091/setStatus -d "status=FAILURE"'
-                }
             }
         }
     }

@@ -19,13 +19,8 @@ describe("Mi prueba", function() {
     expect(restar(5, 2)).toBe(3);
   });
 
-  it("debería generar un error si se le pasa una cadena", function() {
-    // Definir la función que generará un error
-    function funcionConError() {
-      throw new Error('Este es un error intencional.');
-    }
-
-    // Realizar una expectativa para verificar que la función genere un error
-    expect(funcionConError).toThrowError('Este es un error intencional.');
+  it("debería generar un error intencional", function() {
+    // Agregar código que genere un error intencional
+    throw new Error("Este es un error intencional.");
   });
 });

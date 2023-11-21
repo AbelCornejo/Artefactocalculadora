@@ -14,7 +14,7 @@ pipeline {
                     try {
                         // Agrega comandos para construir tu proyecto
                         // En lugar de 'npm install', simplemente ejecuta el archivo Node.js
-                        bat 'npm install123123' 
+                        bat 'npm install' 
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error('Error en la etapa de construcción :(')
@@ -28,7 +28,7 @@ pipeline {
                 script {
                     try {
                         // Ejecuta tus pruebas
-                        bat 'jasmine'
+                        bat 'zzzzzzjasmine'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error('Las pruebas han fallado :(')

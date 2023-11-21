@@ -28,7 +28,7 @@ pipeline {
                 script {
                     try {
                         // Ejecuta tus pruebas
-                        bat 'zzzzzzjasmine'
+                        bat 'jasmine'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error('Las pruebas han fallado :(')
